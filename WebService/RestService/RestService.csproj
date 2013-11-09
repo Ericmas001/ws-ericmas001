@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C539942-39A3-4F4F-9634-1ABBD2F291EA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RestService</RootNamespace>
+    <AssemblyName>RestService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestLive|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\EricMediaCenter\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Services\Deprecated\Entities\TvWebsiteEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvRageEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\EpGuideEntry.cs" />
+    <Compile Include="StreamingWebsites\VioozMovieWebsite.cs" />
+    <Compile Include="StreamingWebsites\Entities\IListedStreamingItem.cs" />
+    <Compile Include="StreamingWebsites\LookizMovieWebsite.cs" />
+    <Compile Include="StreamingWebsites\Entities\Movie.cs" />
+    <Compile Include="StreamingWebsites\Entities\ListedMovie.cs" />
+    <Compile Include="StreamingWebsites\Entities\IMovieWebsite.cs" />
+    <Compile Include="Services\Deprecated\AutomatedService.cs" />
+    <Compile Include="Services\BotService.cs" />
+    <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\UsersService.cs" />
+    <Compile Include="Services\TvService.cs" />
+    <Compile Include="Services\Deprecated\TubePlusService.cs" />
+    <Compile Include="Services\Deprecated\TvRageService.cs" />
+    <Compile Include="Services\Deprecated\EpGuideService.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvEpisodeEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvSeasonEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvShowDetailedEntry.cs" />
+    <Compile Include="Services\Deprecated\Entities\TvShowEntry.cs" />
+    <Compile Include="Services\Deprecated\WatchSeriesService.cs" />
+    <Compile Include="Services\Deprecated\UserService.cs" />
+    <Compile Include="StreamingWebsites\WatchSeriesOnlineTvWebsite.cs" />
+    <Compile Include="StreamingWebsites\WatchSeriesTvWebsite.cs" />
+    <Compile Include="StreamingWebsites\PrimeWireWebsite.cs" />
+    <Compile Include="StreamingWebsites\TubePlusWebsite.cs" />
+    <Compile Include="StreamingWebsites\Entities\Episode.cs" />
+    <Compile Include="StreamingWebsites\Entities\StreamingInfo.cs" />
+    <Compile Include="StreamingWebsites\TvLinksTvWebsite.cs" />
+    <Compile Include="StreamingWebsites\ProjectFreeTvWebsite.cs" />
+    <Compile Include="StreamingWebsites\Entities\ListedEpisodes.cs" />
+    <Compile Include="StreamingWebsites\Entities\TvShow.cs" />
+    <Compile Include="StreamingWebsites\Entities\ListedTvShow.cs" />
+    <Compile Include="StreamingWebsites\Entities\ITvWebsite.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\MegaVideoParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\MovShareParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\NovaMovParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\PlayHDParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\StageVuParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\VideoWeedParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\WiseVidParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\YoutubeParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\ZShareParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\PutLockerSockShareParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\GorillaVidParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParser\IVideoParser.cs" />
+    <Compile Include="Services\Deprecated\VideoParsingService.cs" />
+    <Compile Include="Services\Deprecated\Entities\ScheduleEntry.cs" />
+    <Compile Include="Services\Deprecated\TvScheduleService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Deprecated\TimeService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections2011.csproj">
+      <Project>{E6120916-9399-4BF5-8F95-19D79DF74067}</Project>
+      <Name>EricUtilityCollections2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtilityNetworking\EricUtilityNetworking2011.csproj">
+      <Project>{980f8de9-2f6e-4a96-849d-23754b364271}</Project>
+      <Name>EricUtilityNetworking2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtility\EricUtility2011.csproj">
+      <Project>{E88C4AEF-1B0B-45C0-A08D-CBCDA35C1E62}</Project>
+      <Name>EricUtility2011</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Arvixe.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50082</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
