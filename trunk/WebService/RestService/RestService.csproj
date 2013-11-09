@@ -95,6 +95,7 @@
     <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvRageEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\EpGuideEntry.cs" />
+    <Compile Include="Services\LABS\TimeService.cs" />
     <Compile Include="Services\LOU\UserService.cs" />
     <Compile Include="StreamingWebsites\VioozMovieWebsite.cs" />
     <Compile Include="StreamingWebsites\Entities\IListedStreamingItem.cs" />
@@ -147,7 +148,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LABS\TimeService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
