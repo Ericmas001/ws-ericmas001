@@ -163,9 +163,9 @@
       <Project>{E88C4AEF-1B0B-45C0-A08D-CBCDA35C1E62}</Project>
       <Name>EricUtility2011</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LouMapInfoLib\LouMapInfoLib.csproj">
+    <ProjectReference Include="..\LouMapInfoLib\LouMapInfoLib2011.csproj">
       <Project>{94fcf27f-d4f1-456f-9d5e-60c40e4a45cb}</Project>
-      <Name>LouMapInfoLib</Name>
+      <Name>LouMapInfoLib2011</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

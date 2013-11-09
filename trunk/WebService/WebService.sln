@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityNetworking2011",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricUtilityWinForms2011", "EricUtilityWinForms\EricUtilityWinForms2011.csproj", "{ABF7D9DE-3646-4737-8EFC-5C3D5FD1CFA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoLib", "LouMapInfoLib\LouMapInfoLib.csproj", "{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LouMapInfoLib2011", "LouMapInfoLib\LouMapInfoLib2011.csproj", "{94FCF27F-D4F1-456F-9D5E-60C40E4A45CB}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
