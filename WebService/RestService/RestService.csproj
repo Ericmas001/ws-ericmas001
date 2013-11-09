@@ -91,30 +91,31 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\Deprecated\Entities\TvWebsiteEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvRageEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\EpGuideEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvWebsiteEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvRageEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\EpGuideEntry.cs" />
+    <Compile Include="Services\LOU\UserService.cs" />
     <Compile Include="StreamingWebsites\VioozMovieWebsite.cs" />
     <Compile Include="StreamingWebsites\Entities\IListedStreamingItem.cs" />
     <Compile Include="StreamingWebsites\LookizMovieWebsite.cs" />
     <Compile Include="StreamingWebsites\Entities\Movie.cs" />
     <Compile Include="StreamingWebsites\Entities\ListedMovie.cs" />
     <Compile Include="StreamingWebsites\Entities\IMovieWebsite.cs" />
-    <Compile Include="Services\Deprecated\AutomatedService.cs" />
-    <Compile Include="Services\BotService.cs" />
-    <Compile Include="Services\MovieService.cs" />
-    <Compile Include="Services\UsersService.cs" />
-    <Compile Include="Services\TvService.cs" />
-    <Compile Include="Services\Deprecated\TubePlusService.cs" />
-    <Compile Include="Services\Deprecated\TvRageService.cs" />
-    <Compile Include="Services\Deprecated\EpGuideService.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvEpisodeEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvSeasonEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvShowDetailedEntry.cs" />
-    <Compile Include="Services\Deprecated\Entities\TvShowEntry.cs" />
-    <Compile Include="Services\Deprecated\WatchSeriesService.cs" />
-    <Compile Include="Services\Deprecated\UserService.cs" />
+    <Compile Include="Services\EMC\Deprecated\AutomatedService.cs" />
+    <Compile Include="Services\EMC\BotService.cs" />
+    <Compile Include="Services\EMC\MovieService.cs" />
+    <Compile Include="Services\EMC\UsersService.cs" />
+    <Compile Include="Services\EMC\TvService.cs" />
+    <Compile Include="Services\EMC\Deprecated\TubePlusService.cs" />
+    <Compile Include="Services\EMC\Deprecated\TvRageService.cs" />
+    <Compile Include="Services\EMC\Deprecated\EpGuideService.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvSeasonEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvShowDetailedEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\TvShowEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\WatchSeriesService.cs" />
+    <Compile Include="Services\EMC\Deprecated\UserService.cs" />
     <Compile Include="StreamingWebsites\WatchSeriesOnlineTvWebsite.cs" />
     <Compile Include="StreamingWebsites\WatchSeriesTvWebsite.cs" />
     <Compile Include="StreamingWebsites\PrimeWireWebsite.cs" />
@@ -127,26 +128,26 @@
     <Compile Include="StreamingWebsites\Entities\TvShow.cs" />
     <Compile Include="StreamingWebsites\Entities\ListedTvShow.cs" />
     <Compile Include="StreamingWebsites\Entities\ITvWebsite.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\MegaVideoParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\MovShareParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\NovaMovParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\PlayHDParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\StageVuParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\VideoWeedParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\WiseVidParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\YoutubeParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\BrokenOrGone\ZShareParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\PutLockerSockShareParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\GorillaVidParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParser\IVideoParser.cs" />
-    <Compile Include="Services\Deprecated\VideoParsingService.cs" />
-    <Compile Include="Services\Deprecated\Entities\ScheduleEntry.cs" />
-    <Compile Include="Services\Deprecated\TvScheduleService.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\MegaVideoParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\MovShareParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\NovaMovParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\PlayHDParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\StageVuParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\VideoWeedParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\WiseVidParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\YoutubeParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\BrokenOrGone\ZShareParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\PutLockerSockShareParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\GorillaVidParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParser\IVideoParser.cs" />
+    <Compile Include="Services\EMC\Deprecated\VideoParsingService.cs" />
+    <Compile Include="Services\EMC\Deprecated\Entities\ScheduleEntry.cs" />
+    <Compile Include="Services\EMC\Deprecated\TvScheduleService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Deprecated\TimeService.cs" />
+    <Compile Include="Services\LABS\TimeService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -161,6 +162,10 @@
     <ProjectReference Include="..\EricUtility\EricUtility2011.csproj">
       <Project>{E88C4AEF-1B0B-45C0-A08D-CBCDA35C1E62}</Project>
       <Name>EricUtility2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LouMapInfoLib\LouMapInfoLib.csproj">
+      <Project>{94fcf27f-d4f1-456f-9d5e-60c40e4a45cb}</Project>
+      <Name>LouMapInfoLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
