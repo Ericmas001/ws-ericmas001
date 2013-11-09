@@ -1,9 +1,12 @@
-﻿using RestService.Services;
-using RestService.Services.Deprecated;
-using System;
+﻿using System;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
+
+using emc = RestService.Services.Emc;
+using emc_old = RestService.Services.Emc.Deprecated;
+using labs = RestService.Services.Labs;
+using lou = RestService.Services.Lou;
 
 namespace RestService
 {
@@ -19,24 +22,28 @@ namespace RestService
             const string OLD = "old/";
             const string EMC = "emc/";
             const string LABS = "labs/";
+            const string LOU = "lou/";
 
             // EricMediaCenter
-            RouteTable.Routes.Add(new ServiceRoute(EMC + "Tv", new WebServiceHostFactory(), typeof(TvService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + "Movie", new WebServiceHostFactory(), typeof(MovieService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + "Users", new WebServiceHostFactory(), typeof(UsersService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + "Bot", new WebServiceHostFactory(), typeof(BotService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + "Tv", new WebServiceHostFactory(), typeof(emc.TvService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + "Movie", new WebServiceHostFactory(), typeof(emc.MovieService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + "Users", new WebServiceHostFactory(), typeof(emc.UsersService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + "Bot", new WebServiceHostFactory(), typeof(emc.BotService)));
             // Old Services => Soon to be deleted, not used by anybody!
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TvSchedule", new WebServiceHostFactory(), typeof(TvScheduleService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "VideoParsing", new WebServiceHostFactory(), typeof(VideoParsingService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "User", new WebServiceHostFactory(), typeof(UserService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "WatchSeries", new WebServiceHostFactory(), typeof(WatchSeriesService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TubePlus", new WebServiceHostFactory(), typeof(TubePlusService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "Automated", new WebServiceHostFactory(), typeof(AutomatedService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "EpGuide", new WebServiceHostFactory(), typeof(EpGuideService)));
-            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TvRage", new WebServiceHostFactory(), typeof(TvRageService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TvSchedule", new WebServiceHostFactory(), typeof(emc_old.TvScheduleService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "VideoParsing", new WebServiceHostFactory(), typeof(emc_old.VideoParsingService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "User", new WebServiceHostFactory(), typeof(emc_old.UserService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "WatchSeries", new WebServiceHostFactory(), typeof(emc_old.WatchSeriesService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TubePlus", new WebServiceHostFactory(), typeof(emc_old.TubePlusService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "Automated", new WebServiceHostFactory(), typeof(emc_old.AutomatedService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "EpGuide", new WebServiceHostFactory(), typeof(emc_old.EpGuideService)));
+            RouteTable.Routes.Add(new ServiceRoute(EMC + OLD + "TvRage", new WebServiceHostFactory(), typeof(emc_old.TvRageService)));
+
+            // LouMapInfo
+            RouteTable.Routes.Add(new ServiceRoute(LOU + "User", new WebServiceHostFactory(), typeof(lou.UserService)));
 
             // EricLabs
-            RouteTable.Routes.Add(new ServiceRoute(LABS + "Time", new WebServiceHostFactory(), typeof(TimeService)));
+            RouteTable.Routes.Add(new ServiceRoute(LABS + "Time", new WebServiceHostFactory(), typeof(labs.TimeService)));
         }
     }
 }
