@@ -7,6 +7,7 @@ using emc = RestService.Services.Emc;
 using emc_old = RestService.Services.Emc.Deprecated;
 using labs = RestService.Services.Labs;
 using lou = RestService.Services.Lou;
+using house = RestService.Services.House;
 
 namespace RestService
 {
@@ -23,6 +24,7 @@ namespace RestService
             const string EMC = "emc/";
             const string LABS = "labs/";
             const string LOU = "lou/";
+            const string HOUSE = "duproprio/";
 
             // EricMediaCenter
             RouteTable.Routes.Add(new ServiceRoute(EMC + "Tv", new WebServiceHostFactory(), typeof(emc.TvService)));
@@ -41,6 +43,9 @@ namespace RestService
 
             // LouMapInfo
             RouteTable.Routes.Add(new ServiceRoute(LOU + "User", new WebServiceHostFactory(), typeof(lou.UserService)));
+
+            // DuProprio
+            RouteTable.Routes.Add(new ServiceRoute(HOUSE + "User", new WebServiceHostFactory(), typeof(house.UserService)));
 
             // EricLabs
             RouteTable.Routes.Add(new ServiceRoute(LABS + "Time", new WebServiceHostFactory(), typeof(labs.TimeService)));
