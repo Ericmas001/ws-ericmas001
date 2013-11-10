@@ -95,6 +95,7 @@
     <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvRageEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\EpGuideEntry.cs" />
+    <Compile Include="Services\HOUSE\UserService.cs" />
     <Compile Include="Services\LABS\TimeService.cs" />
     <Compile Include="Services\LOU\UserService.cs" />
     <Compile Include="StreamingWebsites\VioozMovieWebsite.cs" />
@@ -151,6 +152,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\DuProprioLib\DuProprioLib.csproj">
+      <Project>{bb88de31-f12c-43ff-9847-e59ae4ba1daf}</Project>
+      <Name>DuProprioLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections2011.csproj">
       <Project>{E6120916-9399-4BF5-8F95-19D79DF74067}</Project>
       <Name>EricUtilityCollections2011</Name>
