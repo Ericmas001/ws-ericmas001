@@ -2,6 +2,7 @@ using DuProprioLib.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
@@ -17,8 +18,8 @@ namespace RestService.Services.House
         public string Session(string user, string pass)
         {
             SessionInfo m_Session = new SessionInfo(user, pass);
-
-            return JsonConvert.SerializeObject(m_Session.GetFavs().Result);
+            IEnumerable<HouseSummary> res = m_Session.GetFavs().Result;
+            return res == null ? "" : JsonConvert.SerializeObject(res);
         }
     }
 }
