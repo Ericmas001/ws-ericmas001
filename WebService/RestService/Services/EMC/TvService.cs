@@ -89,7 +89,11 @@ namespace RestService.Services.Emc
         {
             if (!m_Supported.ContainsKey(lang) || !m_Supported[lang].ContainsKey(website))
                 return null;
-            return JsonConvert.SerializeObject(m_Supported[lang][website].ShowAsync(showId, false).Result ?? new TvShow());
+
+            TvShow show = m_Supported[lang][website].ShowAsync(showId, false).Result;
+            if (show != null)
+                UpdateLastEpisode(show,website,showId);
+            return JsonConvert.SerializeObject(show ?? new TvShow());
         }
 
         [WebGet(UriTemplate = "ShowFull/{lang}/{website}/{showId}")]
@@ -97,6 +101,9 @@ namespace RestService.Services.Emc
         {
             if (!m_Supported.ContainsKey(lang) || !m_Supported[lang].ContainsKey(website))
                 return null;
+            TvShow show = m_Supported[lang][website].ShowAsync(showId, true).Result;
+            if (show != null)
+                UpdateLastEpisode(show, website, showId);
             return JsonConvert.SerializeObject(m_Supported[lang][website].ShowAsync(showId, true).Result ?? new TvShow());
         }
 
@@ -252,6 +259,28 @@ namespace RestService.Services.Emc
             catch (Exception e)
             {
                 return JsonConvert.SerializeObject(new { success = false, problem = e.ToString() });
+            }
+        }
+
+        private void UpdateLastEpisode(TvShow show, string website, string name)
+        {
+            SqlConnection myConnection = Connector.GetConnection();
+            try
+            {
+                Connector.ExecuteSP(myConnection, "ericmas001.SPTvLastEpisode", new List<SPParam>
+                    {
+                        new SPParam(new SqlParameter("@website", SqlDbType.VarChar, 50),website),
+                        new SPParam(new SqlParameter("@name", SqlDbType.VarChar, 50),name),
+                        new SPParam(new SqlParameter("@lastSeason", SqlDbType.Int),show.NoLastSeason),
+                        new SPParam(new SqlParameter("@lastEpisode", SqlDbType.Int),show.NoLastEpisode),
+                        new SPParam(new SqlParameter("@ok", SqlDbType.Bit),ParamDir.Output),
+                        new SPParam(new SqlParameter("@info", SqlDbType.VarChar, 100),ParamDir.Output),
+                    });
+            }
+            finally
+            {
+                if (myConnection != null)
+                    myConnection.Close();
             }
         }
     }
