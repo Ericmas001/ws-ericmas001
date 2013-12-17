@@ -81,6 +81,25 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Emc2\emc2-draft.txt" />
+    <Content Include="Data\Emc2\TFavShows\SPFavAddShow.sql" />
+    <Content Include="Data\Emc2\TFavShows\SPFavDelShow.sql" />
+    <Content Include="Data\Emc2\TFavShows\SPFavLastViewed.sql" />
+    <Content Include="Data\Emc2\TFavShows\SPUserAllFavs.sql" />
+    <Content Include="Data\Emc2\TFavShows\TFavShows.sql" />
+    <Content Include="Data\Emc2\TTvShow\SPTvAddShow.sql" />
+    <Content Include="Data\Emc2\TTvShow\SPTvAllShows.sql" />
+    <Content Include="Data\Emc2\TTvShow\SPTvGetShow.sql" />
+    <Content Include="Data\Emc2\TTvShow\SPTvLastEpisode.sql" />
+    <Content Include="Data\Emc2\TTvShow\TTvShow.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserChangeInfo.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserChangePassword.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserConnect.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserGetInfo.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserRefresh.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserRegister.sql" />
+    <Content Include="Data\Emc2\TUsers\SPUserValidToken.sql" />
+    <Content Include="Data\Emc2\TUsers\TUser.sql" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -91,7 +110,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Emc2Database.cs" />
+    <Compile Include="Data\Emc2\Database.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvWebsiteEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvRageEntry.cs" />

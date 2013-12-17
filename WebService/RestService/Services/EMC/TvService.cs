@@ -1,7 +1,7 @@
 ﻿using EricUtility2011.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using RestService.Data;
+using RestService.Data.Emc2;
 using RestService.StreamingWebsites;
 using RestService.StreamingWebsites.Entities;
 using System;
@@ -89,7 +89,7 @@ namespace RestService.Services.Emc
 
             TvShow show = m_Supported[lang][website].ShowAsync(showId, false).Result;
             if (show != null)
-                Emc2Database.TvShowUpdateLastEpisode(show, website, showId);
+                Database.TvShowUpdateLastEpisode(show, website, showId);
             return JsonConvert.SerializeObject(show ?? new TvShow());
         }
 
@@ -100,7 +100,7 @@ namespace RestService.Services.Emc
                 return null;
             TvShow show = m_Supported[lang][website].ShowAsync(showId, true).Result;
             if (show != null)
-                Emc2Database.TvShowUpdateLastEpisode(show, website, showId);
+                Database.TvShowUpdateLastEpisode(show, website, showId);
             return JsonConvert.SerializeObject(m_Supported[lang][website].ShowAsync(showId, true).Result ?? new TvShow());
         }
 
@@ -140,7 +140,7 @@ namespace RestService.Services.Emc
         [WebGet(UriTemplate = "Favs/{user}/{token}")]
         public string Favs(string user, string token)
         {
-            SPResult rAll = Emc2Database.UserGetAllFavTvShows(user, token);
+            SPResult rAll = Database.UserGetAllFavTvShows(user, token);
 
             Dictionary<string, object> p = rAll.Parameters;
 
@@ -153,7 +153,7 @@ namespace RestService.Services.Emc
         [WebGet(UriTemplate = "AddFav/{user}/{token}/{lang}/{website}/{showname}/{showtitle}/{lastseason}/{lastepisode}")]
         public string AddFav(string user, string token, string lang, string website, string showname, string showtitle, string lastseason, string lastepisode)
         {
-            Dictionary<string, object> p = Emc2Database.UserAddFavTvShow(user, token, lang, website, showname, showtitle, lastseason, lastepisode);
+            Dictionary<string, object> p = Database.UserAddFavTvShow(user, token, lang, website, showname, showtitle, lastseason, lastepisode);
 
             if ((bool)p["@ok"])
                 return JsonConvert.SerializeObject(new { success = true });
@@ -164,7 +164,7 @@ namespace RestService.Services.Emc
         [WebGet(UriTemplate = "DelFav/{user}/{token}/{lang}/{website}/{showname}")]
         public string DelFav(string user, string token, string lang, string website, string showname)
         {
-            Dictionary<string, object> p = Emc2Database.UserDelFavTvShow(user, token, website, lang, showname);
+            Dictionary<string, object> p = Database.UserDelFavTvShow(user, token, website, lang, showname);
 
             if ((bool)p["@ok"])
                 return JsonConvert.SerializeObject(new { success = true });
@@ -175,7 +175,7 @@ namespace RestService.Services.Emc
         [WebGet(UriTemplate = "LastViewed/{user}/{token}/{lang}/{website}/{showname}/{lastviewedseason}/{lastviewedepisode}")]
         public string LastViewed(string user, string token, string lang, string website, string showname, string lastviewedseason, string lastviewedepisode)
         {
-            Dictionary<string, object> p = Emc2Database.UserSetLastViewedTvEpisode(user, token, website, lang, showname, lastviewedseason, lastviewedepisode);
+            Dictionary<string, object> p = Database.UserSetLastViewedTvEpisode(user, token, website, lang, showname, lastviewedseason, lastviewedepisode);
 
             if ((bool)p["@ok"])
                 return JsonConvert.SerializeObject(new { success = true });

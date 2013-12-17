@@ -1,0 +1,17 @@
+﻿TUser: idUser, username password email
+-> 1, ericmas001,MyP@ssWord,ericmas001@gmail.com
+-> 2, test,testMPD,ericmas001@hotmail.com
+	
+TShow: idShow, website showname showtitle lastSeason lastEpisode
+-> 1, watchseries-online.eu, dexter, Dexter, 7, 12
+-> 2, watchseries-online.eu, the-big-bang-theory, 6, 19
+-> 3, tubeplus.me, 1386155, 6, 19
+
+TFavShow: idShow, idUser
+-> 1, 1
+-> 1, 2
+-> 2, 2
+-> 2, 3
+
+TLinkShow: idUser idShow idOtherShow
+-> 2, 2, 3
