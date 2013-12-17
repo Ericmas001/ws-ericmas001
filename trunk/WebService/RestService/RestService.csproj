@@ -91,6 +91,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Emc2Database.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvWebsiteEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvEpisodeDetailedEntry.cs" />
     <Compile Include="Services\EMC\Deprecated\Entities\TvRageEntry.cs" />
