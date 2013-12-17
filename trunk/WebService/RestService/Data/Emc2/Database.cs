@@ -7,9 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace RestService.Data
+namespace RestService.Data.Emc2
 {
-    public static class Emc2Database
+    public static class Database
     {
         private static SqlServerConnector Connector = new SqlServerConnector("TURNSOL.arvixe.com", "emc2", "emc.webservice", "Emc42FTW");
 

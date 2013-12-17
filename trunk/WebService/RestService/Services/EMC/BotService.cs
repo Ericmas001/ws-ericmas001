@@ -1,7 +1,7 @@
 ﻿using EricUtility;
 using EricUtility2011.Data;
 using Newtonsoft.Json;
-using RestService.Data;
+using RestService.Data.Emc2;
 using RestService.StreamingWebsites.Entities;
 using System;
 using System.Collections.Generic;
@@ -55,7 +55,7 @@ namespace RestService.Services.Emc
                     continue;
                 }
 
-                Dictionary<string, object> p = Emc2Database.TvShowUpdateLastEpisode(show, website, name);
+                Dictionary<string, object> p = Database.TvShowUpdateLastEpisode(show, website, name);
                 if (!(bool)p["@ok"])
                     return JsonConvert.SerializeObject(new { success = false, problem = (String)p["@info"] });
                 changes.Add(new { showname = name, website = website, info = (String)p["@info"] });
