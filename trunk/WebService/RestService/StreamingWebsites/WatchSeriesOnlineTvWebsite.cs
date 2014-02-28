@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace RestService.StreamingWebsites
 {
@@ -120,7 +121,7 @@ namespace RestService.StreamingWebsites
                 string title = StringUtility.RemoveHTMLTags(itemP.Extract("<span class=\"PostHeader\">", "</a>")).Replace("\n", "");
                 ExtractTitleAndNos(episode, title, showname);
 
-                string date = itemP.Extract("alt=\"PostDateIcon\" />", " | ").Replace("\n", "").Replace("th,", ",").Replace("st,", ",").Replace("nd,", ",").Replace("rd,", ",");
+                string date = itemP.Extract("</noscript>", " | ").Replace("\n", "").Replace("th,", ",").Replace("st,", ",").Replace("nd,", ",").Replace("rd,", ",");
                 episode.ReleaseDate = DateTime.ParseExact(date, "MMMM d, yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
 
                 eps.Add(episode);
@@ -191,72 +192,76 @@ namespace RestService.StreamingWebsites
             string title = StringUtility.RemoveHTMLTags(src.Extract("<span class=\"PostHeader\">", "</span>")).Replace("\n", "").Trim();
             ExtractTitleAndNos(ep, title, showname);
 
-            string date = src.Extract("alt=\"PostDateIcon\"/>", " | ").Replace("\n", "").Replace("th", "").Replace("st", "").Replace("nd", "").Replace("rd", "").Replace("Augu ", "August ");
+            string date = src.Extract("alt=\"PostDateIcon\"/></noscript>", "|").Replace("\n", "").Replace("th", "").Replace("st", "").Replace("nd", "").Replace("rd", "").Replace("Augu ", "August ");
             ep.ReleaseDate = DateTime.ParseExact(date.Trim(), "MMMM d, yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
 
             string all = src.Extract("<table class=\"postlinks", "</table>");
 
-            string linkDeb = "<tr><td class=";
+            string linkDeb = "<tr>";
             int startP = all.IndexOf(linkDeb) + linkDeb.Length;
             while (startP >= linkDeb.Length)
             {
-                int endP = all.IndexOf("</td></tr>", startP);
+                int endP = all.IndexOf("</tr>", startP);
                 string itemP = all.Substring(startP, endP - startP).Trim();
                 startP = all.IndexOf(linkDeb, endP) + linkDeb.Length;
 
-                string nfo = itemP.Extract("<a target=\"_blank\" id=\"hovered\"", "</td>");
-                string website = nfo.Extract(">", "<");
-                int sp = website.IndexOf(" ");
-                if (sp > 1)
-                    website = website.Remove(sp);
-                string url = nfo.Extract("href=\"http://" + URL + "/watch.php?l=", "\">").Replace("/", "_");
+                if (itemP.TrimStart().StartsWith("<td"))
+                {
+                    string nfo = itemP.Extract("<a target=\"_blank\" id=\"hovered\"", "</td>");
+                    string website = nfo.Extract(">", "<");
+                    int sp = website.IndexOf(" ");
+                    if (sp > 1)
+                        website = website.Remove(sp);
+                    string url = HttpUtility.UrlEncode(nfo.Extract("href=\"http://", "\">").Replace("/","_slash_"));
 
-                if (!ep.Links.ContainsKey(website))
-                    ep.Links.Add(website, new List<string>());
-                ep.Links[website].Add(url);
+                    if (!ep.Links.ContainsKey(website))
+                        ep.Links.Add(website, new List<string>());
+                    ep.Links[website].Add(url);
+                }
             }
             return ep;
         }
 
         public async Task<StreamingInfo> StreamAsync(string website, string args)
         {
-            string baseurl = "http://" + URL + "/watch.php?l=" + args;
-            HttpClient m_Client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, baseurl);
+            //string baseurl = "http://" + URL + "/watch.php?l=" + args;
+            //HttpClient m_Client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
+            //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, baseurl);
 
-            request.Headers.Host = URL;
+            //request.Headers.Host = URL;
 
-            //Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xhtml+xml"));
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml", 0.9));
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*", 0.8));
+            ////Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
+            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xhtml+xml"));
+            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml", 0.9));
+            //request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*", 0.8));
 
-            //Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
-            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("fr"));
-            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("fr-fr", 0.8));
-            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en-us", 0.5));
-            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en", 0.5));
+            ////Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
+            //request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("fr"));
+            //request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("fr-fr", 0.8));
+            //request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en-us", 0.5));
+            //request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en", 0.5));
 
-            //Accept-Encoding: gzip, deflate
-            request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
-            request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
+            ////Accept-Encoding: gzip, deflate
+            //request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+            //request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
 
-            //Content-Type: application/x-www-form-urlencoded; charset=UTF-8
-            //Content-Type: text/html; charset="UTF-8"
-            request.Content = new StringContent("l=" + args);
-            request.Content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("text/html");
+            ////Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+            ////Content-Type: text/html; charset="UTF-8"
+            //request.Content = new StringContent("l=" + args);
+            //request.Content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("text/html");
 
-            //User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0
-            request.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0");
+            ////User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0
+            //request.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0");
 
-            HttpResponseMessage result = await m_Client.SendAsync(request);
-            result.EnsureSuccessStatusCode();
-            string src = await result.Content.ReadAsStringAsync();
+            //HttpResponseMessage result = await m_Client.SendAsync(request);
+            //result.EnsureSuccessStatusCode();
+            //string src = await result.Content.ReadAsStringAsync();
 
-            string url = src.Extract("<a id=\"redirectButton\" class=\"myButton\" href='", "'>");
+            //string url = src.Extract("<a id=\"redirectButton\" class=\"myButton\" href='", "'>");
+            string url = "http://" + HttpUtility.UrlDecode(args).Replace("_slash_", "/");
             string durl = null;
-
+            await new HttpClient().GetStringAsync(url);
             return new StreamingInfo() { StreamingURL = url, Arguments = args, Website = website, DownloadURL = durl };
         }
 
